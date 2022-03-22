@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add tracker</title> 
+        <script>
+            function displayQuestion(answer) {
+             if (answer == "mcq") { // hide the div that is not selected
+
+                 document.getElementById('question').style.display = "block";
+
+                } 
+
+            
+
+}
+        </script> 
+        <style>
+            #question{
+                display:none;
+            }
+        </style>
+    </head> 
+    <body> 
+        <p>Hello,{{nam.name}}</p>
+        <form  method="POST" id="form1" action="/{{user}}/tracker/create" >
+            <div>
+            <label >tracker name:</label>
+            <input type="text" name="tname" required />
+            </div>
+            <br>
+            <div>
+            <label>desctiption:</label>
+            <input type="text" name="desc" required />
+            </div>
+            <br>
+            <div>
+            <label>trackertype:</label>
+            <select name="vtype" id="type" onclick="displayQuestion(this.value)" >
+                <option  value="Num" >Numerical</option>
+                <option  value="mcq" >multiple choice</option>
+                <option  value="td">Time Duration</option>
+                <option  value="bool"> Boolean</option> 
+            </select> 
+            
+            </div>   
+            <div id="question"> 
+                
+                <label>setting:</label>
+                <input type="text" name="sett" />
+                </div>
+    
+            <div>
+            <input type="submit" value = "logit">
+            </div>
+            </form>  
+    </body>
+</html>

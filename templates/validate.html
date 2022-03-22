@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Wrong input</title> 
+    </head>
+    <body>
+        
+    </body>
+
+</html>
+<div>
+    <select name="graph" id="graphtyper" onchange="setImage(this);"> 
+           <option value="period" selected>period</option>
+            <option value="{{url_for('static',filename='today.png')}}" >today</option>
+            <option value="{{url_for('static',filename='week.png')}}">this week</option>
+            <option value="{{url_for('static',filename='month.png')}}">this month</option>
+    </select><br />
+   <img src="" name="image-swap" />   
+    </div>

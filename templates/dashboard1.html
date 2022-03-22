@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        
+
+        <title>Dashboard</title> 
+        
+        <style>
+            body{
+                background-image: url('https://mcdn.wallpapersafari.com/medium/38/76/fnbYAd.jpg');
+                background-size: cover;
+            }
+            .head{
+                display: flex;
+            }
+            .userName{
+            
+                margin-left: 7%;
+                margin-top: 4%;
+                color: rgb(231, 144, 31);
+                text-shadow: 2px 2px rgb(0, 0, 0);
+                font-size: 50px;
+                
+            }
+            #logout{
+                margin-left: 56%;
+                margin-top: 4%;
+                background-color: rgb(25, 31, 37);
+                border: 1px solid white;
+                width: 90px;
+                height: 40px;
+                color: rgb(238, 255, 6);
+                padding: 12px 12px;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 7%;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            }
+            #logout:hover{
+                background-color: rgba(253, 7, 7, 0.9);
+            }
+            #table{
+                margin-left: 18.5%;
+                margin-top: 1%;
+                width: 50%;
+            }
+            #trhead{
+                font-size: 37px;
+                color:  rgb(0, 0, 0);
+                text-shadow: 2px 2px rgb(231, 144, 31, 0.5);
+                
+            }
+            .entry{
+                color: rgb(14, 11, 11,0.7);
+                font-size: large;
+                
+            } 
+            #track:hover
+            {
+                color: #fd6107e6;
+            }
+            #add{
+                padding-left: 39%;
+                padding-top: 3%;
+            }
+            #btn:hover {
+              background-color: rgba(201, 189, 21, 0.9);
+        } 
+        #Act:hover {
+              background-color: rgba(201, 189, 21, 0.9);
+        }
+
+        </style>
+    </head>
+    <body>
+        <div class="head">
+        <h1 class="userName">Hello, {{user.name}}</h1>
+        <button id="logout"><a style="text-decoration: none; color:#fbff00" href="/"> <b><i class="fa fa-close"></i>logout</b></a></button>
+        </div>
+        
+        <br>
+        <div class="divt">
+        <table id="table">
+            <tbody>
+                <tr id="trhead"><th>Tracker</th><th>last tracked</th><th></th><th></th></tr> 
+                {%for i in range(track|length) %}
+                <tr>
+                    <td class="entry" style="color: rgb(14, 5, 1); font-size: 27px; text-align: center;"><a style="text-decoration: none;" id="track" href="/{{track[i].id}}/log/detail">{{track[i].name}}</a></td> 
+                    <td style="color: rgb(17, 1, 1); font-size: 27px; text-align: center;">{{rec_log[i]}}</td>
+                    <td style="font-size: 30px; color: white; text-align: center; "><a style="text-decoration: none; " id="track" href="/log/{{track[i].uname}}/{{track[i].id}}/create"><B>+</B></a></td>
+                    <td style=" padding-left: 50px; "> 
+                        <select name="Action" id="Act" placeholder="Action" onchange="location= this.value;">
+                        <option value="/" placeholder="Action">Action</option>
+                        <option value="/tracker/{{track[i].id}}/{{user.username}}/update">edit</option>
+                        <option value="/tracker/{{track[i].id}}/{{user.username}}/delete">delete</option>
+                        </select>
+                    </td>
+                </tr> 
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        <div id="add">
+            <button  id="btn" style="font-size:18px;"><a style="text-decoration: none;" href="/{{user.username}}/tracker/create">Add </a><i class="fa fa-star-o"></i></button>
+        </div>
+    </body>
+</html>

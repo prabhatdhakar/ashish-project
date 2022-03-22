@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Add icon library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        
+
+        <title>Dashboard</title> 
+        
+        <style>
+            body{
+                background-image: url('https://wallpaperaccess.com/full/1567831.jpg');
+                background-size: cover;
+            }
+            .head{
+                display: flex;
+            }
+            .userName{
+            
+                margin-left: 4%;
+                margin-top: 2%;
+                color: black;
+                opacity: 0.79;
+                font-size: 45px;
+                text-shadow: 2px 2px wheat;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+            }
+            #logout{
+                margin-left: 56%;
+                margin-top: 4%;
+                background-color: rgb(25, 31, 37);
+                border: 1px solid white;
+                width: 90px;
+                height: 40px;
+                color: white;
+                padding: 12px 12px;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 7%;
+                box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            }
+
+            #table{
+                margin-left: 10%;
+                width: 50%;
+            }
+            #trhead{
+                font-size: 30px;
+                color: rgb(11, 51, 51);
+                text-shadow: 2px 2px cornsilk;
+            }
+            .divt{
+                width: 50%;
+            }
+            #add{
+                padding-left: 47%;
+                padding-top: 1%;
+            }
+            #graphtyper{
+                padding-left: 20%; 
+                padding-top:-10%
+            }
+            #graph{
+                padding-left: 20%; 
+                padding-top:10%
+            } 
+            
+            #hide{
+                padding-left: 20%;
+                padding-top: 1.2%;
+            }
+            #rtracker{
+                color: rgb(5, 31, 32);
+                opacity: 0.86;
+                margin-left: 7%;
+                font-size: 30px;
+                text-shadow: 2px 2px wheat;
+                font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+
+
+        </style> 
+        <script>
+            function setImage(select){
+            var image = document.getElementsByName("image-swap")[0];
+            image.src = select.options[select.selectedIndex].value; 
+            document.getElementById("hide").style.display="none";
+} 
+        </script>
+    </head>
+    <body>
+        <div class="head">
+        <h1 class="userName">Hello, {{nam.name}} 
+        </h1>  
+        <button id="logout"><a style="text-decoration: none; color:red" href="/"> <b><i class="fa fa-close"></i>logout</b></a></button>
+        </div>    
+        <div id="rtracker">
+        {{trac.name}}-Tracker
+        </div>
+        <div id="graphtyper" >
+            <select name="graph"  onchange="setImage(this);"> 
+                   <option id="graph" value="{{url_for('static',filename='month.png')}}" selected>period</option>
+                    <option id="graph" value="{{url_for('static',filename='today.png')}}" >today</option>
+                    <option id="graph"value="{{url_for('static',filename='week.png')}}">this week</option>
+                    <option id="graph"value="{{url_for('static',filename='month.png')}}">this month</option>
+            </select><br />
+           <img src="" name="image-swap" />   
+        </div>
+            <div id="hide">
+                <img src="{{url_for('static',filename='month.png')}}">
+            </div>
+         
+        <br>
+        <div clas="divt">
+        <table id="table">
+            <tbody>
+                <tr id="trhead"><th>On</th><th>Value</th><th></th><th></th></tr> 
+                {%for i in range(l|length) %}
+                <tr>
+                    <td class="entry" style="color: rgb(35, 24, 61); font-size: 26px; text-align: center;">{{t[i][0]}} <br> {{t[i][1]}}</td> 
+                    <td style="text-align: center; color: rgb(35, 24, 61); font-size: 26px;">{{l[i].value}}</td>
+                    <td style="font-size: 26px; color: rgb(35, 24, 61); text-align: center; ">{{l[i].note}}</td>
+                    <td style=" padding-left: 50px; "> 
+                        <select name="Action" id="Action" placeholder="Action" onchange="location= this.value;">
+                        <option value="action" placeholder="Action">Action</option>
+                        <option value="/log/{{l[i].id}}/update">edit</option>
+                        <option value="/log/{{l[i].id}}/delete">delete</option>
+                        </select>
+                    </td>
+                </tr> 
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+
+    </body>
+</html>

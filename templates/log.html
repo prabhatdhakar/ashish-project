@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add tracker</title> 
+        <style>
+            .userName{
+            
+            margin-left: 7%;
+            margin-top: 4%;
+            color: rgb(231, 144, 31);
+            text-shadow: 2px 2px rgb(0, 0, 0);
+            font-size: 50px;
+        </style>
+    </head> 
+    <body> 
+        <h1 class="userName">Hello, {{nam.name}}</h1>
+        <form action="/log/{{uname}}/{{id}}/create" method="POST" id="form1" > 
+            <div>
+            <label >When : </label>
+            <input type="datetime-local" name="logt" value={{t}} id="datepicker">  
+            </div>  
+            {% if i.setting=="null"  %}
+            <div>  
+            <label >Value : </label> 
+            <input type="text" name="val" id="d"> 
+            </div> 
+            {% else %}  
+            <div>  
+            <label >Value : </label> 
+            <select name="val" id="type"> 
+              {% for j in i.setting.split(',')%}    
+              <option  value="{{j}}"> {{j}} </option>
+              {% endfor%} 
+            </select>  
+            </div>
+            {% endif %}
+            <div>
+            <label >Note : </label>
+            <input type="text" name="note" id="da" placeholder="Leave a Note"> 
+            </div> 
+            <div>
+                <input type="submit" value = "logit">
+           </div>
+        </form>  
+    </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>login</title>
+      <style>
+
+      body
+      {
+          background-image: url('https://wallpapercave.com/wp/wp3157182.jpg');
+          background-size: cover;
+          width:90%;
+      }
+
+        .header{
+            color: rgba(6, 15, 43, 0.6);
+            font-size: 43px;
+            margin-left: 45%;
+        }
+        #email{
+            color: rgb(102, 101, 101);
+            padding-left: 15px;
+            margin: 0 33%;
+            height: 40px;
+            width: 40%;
+            border-radius : 4px;
+            background-color: white;
+            border-color: white;
+            opacity: 0.3;
+        }
+
+        #pass{
+        color: rgb(102, 101, 101);
+        padding-left: 15px;
+        margin: 2% 33%;
+        height: 40px;
+        width: 40%;
+        border-radius : 4px;
+        background-color: white;
+        border-color: white;
+        opacity: 0.3;
+        }
+
+        #pass:hover , #email:hover {
+        background-color: white;
+        border-color: white;
+        opacity: 0.7;   
+        }
+
+        #btn{
+        margin: 2% 35%;
+        font-size: 20px;
+        color: white;
+        width: 37%;
+        height: 40px;
+        border: blue;
+        border-radius: 4px;
+        background-color: rgba(109, 57, 102, 0.4);
+        }
+        #btn:hover {
+              background-color: rgba(21, 66, 201, 0.9);
+        }
+
+        #btnn{
+        margin: 2% 35%;
+        font-size: 20px;
+        color: #ffffff;
+        width: 37%; 
+        text-align: center;
+        height: 40px;
+        border: blue;
+        border-radius: 4px;
+        background-color: rgba(120, 250, 44, 0.6);
+        }
+        #btnn:hover {
+              background-color: rgba(27, 156, 10, 0.9);
+        }
+
+      </style>
+    </head>
+    <body> 
+          {%if msg!=''%} 
+          <p>{{msg}}</p>
+          {%endif%}
+          <h2 class="header">DailyTrack</h2> 
+          <form name="data-form" action="/" method="post">
+              <input type="hidden" name="form-name" value="data-form" />
+              <div className="mail">
+                  <input type="text" name="uname" id="email" placeholder="UserName" ></input>
+              </div>
+              <div className="password">
+                  <input type="password" name="passw" id="pass" placeholder="Password"></input>
+              </div>
+              <input  id="btn" type="submit" value = "login">
+          </form> 
+          <a  href="/signup"><div id="btnn">New User?</div></a>
+    </body>
+</html>

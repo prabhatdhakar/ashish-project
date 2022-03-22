@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add tracker</title> 
+        <style>
+             body{
+                background-image: url('https://wallpaperaccess.com/full/806427.jpg');
+                background-size: cover;
+            }
+            .maindiv{ 
+                color: aliceblue;
+                font-size: 35px;
+                padding-top: 0.5%;
+                
+            }
+            #user{
+                padding-left: 3.2%;
+                text-decoration: wavy;
+                color: aqua;
+                font-size: 42px;
+            }
+            #divbox{
+                padding-left: 14%;
+                padding-top: 1.7%;
+                padding-bottom: 1.7%;
+                
+            }
+            #divbox:hover{
+                background-color: rgba(190, 235, 241, 0.1);
+            }
+            #logit{
+                padding-top: 2.2%;
+                padding-left: 11.3%;
+                
+            }
+
+        </style>
+        <script>
+            function displayQuestion(answer) {
+             if (answer == "mcq") { // hide the div that is not selected
+
+                 document.getElementById('question').style.display = "block";
+
+                } 
+
+            
+
+}
+        </script> 
+        <style>
+            #question{
+                display:none;
+            }
+        </style>
+    </head> 
+    <body> 
+        <div class="maindiv">
+        <p id="user">Hello,{{nam.name}}</p>
+        <div id="divbox">
+        <form  method="POST" id="form1" action="/{{user}}/tracker/create" >
+            <div>
+            <label >tracker name:</label>
+            <input type="text" name="tname" required />
+            </div>
+            <br>
+            <div>
+            <label>desctiption:&nbsp; &nbsp;</label>
+            <input type="text" name="desc" required />
+            </div>
+            <br>
+            <div>
+            <label>trackertype: &nbsp; &nbsp; &nbsp;</label>
+            <select name="vtype" id="type" onclick="displayQuestion(this.value)" >
+                <option  value="Num" >Numerical</option>
+                <option  value="mcq" >multiple choice</option>
+                <option  value="td">Time Duration</option>
+                <option  value="bool"> Boolean</option> 
+            </select> 
+            
+            </div>   
+            <div id="question"> 
+                
+                <label>setting:</label>
+                <input type="text" name="sett" />
+                </div>
+    
+            <div id="logit">
+            <input type="submit" value = "  log it  " style="height: 25px; width: 80px; font-size:medium">
+            </div>
+            </form>  
+        </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>SignUp</title>
+      <style>
+        body
+        {
+            background-image: url('https://wallpaper-house.com/data/out/9/wallpaper2you_323820.jpg');
+            background-repeat: no-repeat;
+            height: fit-content;
+            background-size: cover;
+
+        }
+
+        @keyframes example
+        {
+         from {background-color: rgb(68, 56, 92, 0.6);}
+         to {background-color: rgb(214, 150, 90,0.7);}
+        }
+
+        .header{
+            color: rgb(245, 181, 129, 0.6);
+            font-size: 43px;
+            margin-left: 45%;
+        }
+        #name{
+            color: rgb(102, 101, 101);
+            padding-left: 15px;
+            margin: 0 30%;
+            margin-bottom: 2%;
+            height: 40px;
+            width: 40%;
+            border: 1px solid rgb(221, 221, 221);
+            border-radius : 4px;
+            background-color: rgba(158, 199, 201, 0.5);
+        }
+        #username{
+            color: rgb(102, 101, 101);
+            padding-left: 15px;
+            margin: 0 30%;
+            height: 40px;
+            width: 40%;
+            border: 1px solid rgb(221, 221, 221);
+            border-radius : 4px;
+            background-color: rgba(158, 199, 201, 0.5);
+        }
+
+        #pass{
+        color: rgb(102, 101, 101);
+        padding-left: 15px;
+        margin: 2% 30%;
+        height: 40px;
+        width: 40%;
+        border: 1px solid rgb(221, 221, 221);
+        border-radius : 4px;
+        background-color: rgba(158, 199, 201, 0.5);
+        }
+
+        #pass:hover , #username:hover , #name:hover
+        {
+         background-color: rgba(158, 199, 201, 0.9);
+        }
+
+        #btn{
+        margin: 2% 33%;
+        font-size: 20px;
+        color: white;
+        width: 35%;
+        height: 40px;
+        border: blue;
+        border-radius: 4px;
+        background-color: rgb(214, 150, 90,0.7);
+        animation-duration: 0.5s;
+        }
+        #validname{
+            position: absolute;
+            display: none;
+            color: red;
+            top: 148px;
+            left: 400px;;
+        }
+        #validuname{
+            position: absolute;
+            display: none;
+            color: red;
+            top: 220px;
+            left: 400px;;
+        }
+        #validpass{
+            position: absolute;
+            display: none;
+            color: red;
+            top: 295px;
+            left: 400px;;
+        }
+      </style>
+      
+    </head>
+    <body>
+          <h2 class="header">SignUp</h2> 
+          <form name="data-form" method="post" action="/signup" >
+              <div className="mail">
+                  <input type="text" name="name" id="name" placeholder={{name}} > 
+                 {%if fno==1%}
+                    <div style="color:red;padding-left: 520px;">{{error}}</div> 
+               {% endif %}
+              </div>
+              <div className="mail">
+                <input type="text" name="uname" id="username" placeholder={{uname}} >
+                {%if fno==2%}
+                  <p style="color:red;padding-left: 520px;">{{error}}</p> 
+                {%endif%}
+             </div>
+              <div className="password">
+                  <input type="text" name="passw" id="pass" placeholder={{passw}}>
+                  {%if fno==3%}
+                  <p style="color:red;padding-left: 520px;">{{error}}</p> 
+                  {%endif%}
+              </div>
+              <button type="submit" id="btn">SignUp</button>
+              <button style="background-color: rgb(27, 36, 54,0.5);" type="submit" id="btn" ><a  style="text-decoration: none; color:rgb(102, 18, 212)" href="/">existing  User?</a></button>
+          </form>
+         
+    </body>
+</html>
